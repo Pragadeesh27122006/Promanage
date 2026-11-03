@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111827">
+  <title>ProManage | Project Workspace</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <section id="landing" class="landing">
+      <nav class="topnav">
+        <a class="brand" href="#"><span class="brand-mark">P</span> ProManage</a>
+        <div class="navlinks"><a href="#features">Features</a><a href="#about">About</a><a href="#contact">Contact</a></div>
+        <button class="btn btn-light" data-go-login>Login <span>↗</span></button>
+      </nav>
+      <main class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="pulse"></span> ONE WORKSPACE. EVERY PROJECT.</div>
+          <h1>Bring your team’s<br><span>best work</span> together.</h1>
+          <p>Plan projects, assign tasks, track deadlines and keep everyone moving in the same direction.</p>
+          <div class="hero-actions"><button class="btn btn-primary" data-go-login>Get started <span>→</span></button><button class="btn btn-outline" data-go-login>Open dashboard</button></div>
+          <div class="hero-note"><span class="avatars">● ● ●</span> A clearer way to work, together.</div>
+        </div>
+        <div class="hero-visual">
+          <div class="float-card card-one"><div class="mini-label">PROJECT PROGRESS</div><strong>78%</strong><div class="progress"><i style="width:78%"></i></div><small>Website redesign</small></div>
+          <div class="mock-window"><div class="mock-head"><span></span><span></span><span></span><b>Workspace overview</b></div><div class="mock-body"><div class="mock-side"><i></i><i></i><i></i><i></i></div><div class="mock-content"><div class="mock-title">Good morning, team 👋</div><div class="mock-stats"><div><small>Active projects</small><b>12</b></div><div><small>Tasks done</small><b>84</b></div></div><div class="mock-task"><span class="dot green"></span><div><b>Landing page design</b><small>Due today · Design team</small></div><em>Done</em></div><div class="mock-task"><span class="dot orange"></span><div><b>API integration</b><small>Due tomorrow · Development</small></div><em class="working">In progress</em></div><div class="mock-task"><span class="dot purple"></span><div><b>Testing & review</b><small>Due Friday · QA team</small></div><em class="pending">Pending</em></div></div></div></div>
+          <div class="float-card card-two"><div class="check-icon">✓</div><div><b>Task completed</b><small>Just now · Great work!</small></div></div>
+        </div>
+      </main>
+      <section id="features" class="feature-strip"><div><b>01</b><span>Organise projects</span></div><div><b>02</b><span>Assign with clarity</span></div><div><b>03</b><span>Track every deadline</span></div><div><b>04</b><span>Deliver together</span></div></section>
+      <section id="about" class="landing-bottom"><div><span class="eyebrow">BUILT FOR TEAMS</span><h2>Less confusion.<br>More progress.</h2></div><p>ProManage gives admins a clear overview and gives every team member one simple place to focus on their assigned work.</p></section>
+      <footer id="contact">© 2026 ProManage <span>Made for productive teams</span><a href="mailto:support@promanage.local">Contact support</a></footer>
+    </section>
+
+    <section id="login" class="login-screen hidden">
+      <button class="back-link" id="back-home">← Back to home</button>
+      <div class="login-wrap">
+        <div class="login-brand"><span class="brand-mark">P</span><span>ProManage</span></div>
+        <div class="login-card">
+          <div class="eyebrow">WELCOME TO YOUR WORKSPACE</div>
+          <h2>Sign in to continue</h2><p class="muted">Choose how you want to access ProManage.</p>
+          <div class="role-switch"><button class="role-tab active" data-role="admin">Admin</button><button class="role-tab" data-role="user">User</button></div>
+          <form id="login-form">
+            <label id="identity-label" for="identity">Admin username or email</label><input id="identity" autocomplete="username" placeholder="Enter admin username" required>
+            <label for="password">Password</label><input id="password" type="password" autocomplete="current-password" placeholder="Enter password" required>
+            <p id="login-error" class="error"></p><button class="btn btn-primary full" type="submit">Access workspace <span>→</span></button>
+          </form>
+          <div class="login-hint" id="login-hint">Admin demo access is configured for this project.</div>
+        </div>
+        <small class="login-foot">Secure workspace · ProManage</small>
+      </div>
+    </section>
+
+    <section id="dashboard" class="dashboard hidden">
+      <aside class="sidebar">
+        <a class="brand side-brand"><span class="brand-mark">P</span> ProManage</a>
+        <div class="side-caption">WORKSPACE</div>
+        <button class="side-link active" data-page="overview">▦ <span>Overview</span></button>
+        <button class="side-link" data-page="projects">▣ <span>Projects & tasks</span></button>
+        <button class="side-link admin-only" data-page="team">♙ <span>Team members</span></button>
+        <div class="side-caption side-bottom">PREFERENCES</div>
+        <button class="side-link" data-page="settings">⚙ <span>Settings</span></button>
+        <button class="side-link" data-page="about">ⓘ <span>About & contact</span></button>
+        <div class="sidebar-user"><div class="user-avatar" id="side-avatar">P</div><div><b id="side-name">Praga</b><small id="side-role">Administrator</small></div><button id="logout" title="Log out">↪</button></div>
+      </aside>
+      <main class="dash-main">
+        <header class="dash-header"><div><div class="crumb">WORKSPACE / <span id="crumb-page">OVERVIEW</span></div><h1 id="page-title">Overview</h1></div><div class="header-right"><span class="today" id="today"></span><div class="user-avatar small" id="header-avatar">P</div></div></header>
+        <div id="page-content"></div>
+      </main>
+    </section>
+    <div id="toast" class="toast"></div>
+  </div>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-database-compat.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
